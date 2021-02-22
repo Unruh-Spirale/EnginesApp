@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Car</title>
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.6.0/css/bootstrap.min.css}" />
+
+    <script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.6.0/js/bootstrap.min.js}"></script>
+
+</head>
+<body>
+
+<div class="container">
+
+    <div th:replace="fragments/topnav :: navbar"></div>
+
+    <h2 class="mt-4 mb-4">Update Car</h2>
+    <form th:action="${'/'+engine.idEngine+'/updatecar/'+car.idCar}" th:method="post" th:object="${car}">
+        <div class="form-group row">
+            <label for="mark" class="col-sm-2 col-form-label text-uppercase">mark</label>
+            <div class="col-sm-10">
+                <input type="text" id="mark" placeholder="mark" th:field="*{mark}" class="form-control" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="model" class="col-sm-2 col-form-label text-uppercase">model</label>
+            <div class="col-sm-10">
+                <input type="text" id="model" placeholder="model" th:field="*{model}" class="form-control" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="generation" class="col-sm-2 col-form-label text-uppercase">generation</label>
+            <div class="col-sm-10">
+                <input type="text" id="generation" placeholder="generation" th:field="*{generation}" class="form-control">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="year of production" class="col-sm-2 col-form-label text-uppercase">year of production</label>
+            <div class="col-sm-10">
+                <input type="text" id="year of production" placeholder="year of production" th:field="*{yearOfProduction}" class="form-control">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-warning text-uppercase">update car</button>
+    </form>
+</div>
+</body>
+</html>

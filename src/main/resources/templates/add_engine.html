@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add engine form</title>
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.6.0/css/bootstrap.min.css}" />
+
+    <script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.6.0/js/bootstrap.min.js}"></script>
+
+</head>
+<body>
+
+<div class="container">
+
+<div th:replace="fragments/topnav :: navbar"></div>
+
+<h2 class="mt-5 mb-2">Add engine form</h2>
+    <form th:action="@{/saveengine}" th:method="post" th:object="${engine}" class="mb-5">
+        <div class="form-row">
+            <div class="form-group col-sm-6">
+                <label for="company" class="text-uppercase">company</label>
+                <input type="text" id="company" placeholder="company" th:field="*{company}" class="form-control" required>
+            </div>
+            <div class="form-group col-sm-6">
+                <label for="name" class="text-uppercase">name</label>
+                <input type="text" id="name" placeholder="name" th:field="*{name}" class="form-control" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-sm-6">
+                <label for="volume" class="text-uppercase">volume</label>
+                <input type="text" id="volume" placeholder="volume" th:field="*{volume}" class="form-control" required>
+            </div>
+            <div class="form-group col-sm-6">
+                <label for="fuel" class="text-uppercase">fuel</label>
+<!--                <input type="text" id="fuel" placeholder="fuel" th:field="*{fuel}" class="form-control">-->
+                <select id="fuel" th:field="*{fuel}" class="form-control">
+                    <option th:value="'PETROL'" th:text="PETROL"></option>
+                    <option th:value="'DIESEL'" th:text="DIESEL"></option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-sm-6">
+                <label for="power" class="text-uppercase">power</label>
+                <input type="text" id="power" placeholder="power" th:field="*{power}" class="form-control" required>
+            </div>
+            <div class="form-group col-sm-6">
+                <label for="transmission" class="text-uppercase">transmission</label>
+                <input type="text" id="transmission" placeholder="transmission" th:field="*{transmission}" class="form-control">
+                <span class="text-muted">Transmissions: M - manual, A - Automatic, CVT - Continuously Variable Transmission, DSG - Direct-Shift Gearbox</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="description" class="text-uppercase">description</label>
+            <textarea type="text" id="description" placeholder="description" th:field="*{description}" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-success text-uppercase">add engine</button>
+    </form>
+</div>
+</body>
+</html>

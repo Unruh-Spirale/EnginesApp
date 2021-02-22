@@ -1,0 +1,23 @@
+<div th:fragment="navbar">
+
+    <meta charset="UTF-8">
+
+    <div>
+        <h1 class="display-3">Engines Database</h1>
+    </div>
+    <div class=" bg-primary text-white">
+<!--        <ul class="list-inline">-->
+<!--            <li class="list-inline-item">HOME</li>-->
+<!--            <li class="list-inline-item">LOGIN</li>-->
+<!--            <li class="list-inline-item">LOGOUT</li>-->
+<!--            <li class="list-inline-item">REGISTRATION</li>-->
+<!--            <li class="list-inline-item">USERS</li>-->
+<!--        </ul>-->
+        <a th:href="@{/}"><button class="btn btn-primary">HOME</button></a>
+        <a th:href="@{/login}"><button class="btn btn-primary">LOGIN</button></a>
+        <a th:href="@{/logout}"><button class="btn btn-primary">LOGOUT</button></a>
+        <a th:href="@{/register}"><button class="btn btn-primary">REGISTRATION</button></a>
+        <a th:href="@{/users}"><button class="btn btn-primary">USERS</button></a>
+    </div>
+
+</div>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Engines database</title>
+
+    <link rel="stylesheet" th:href="@{/style.css}" type="text/css">
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.6.0/css/bootstrap.min.css}" />
+
+    <script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.6.0/js/bootstrap.min.js}"></script>
+
+</head>
+<body>
+
+    <div class="container">
+
+    <div th:replace="fragments/topnav :: navbar"></div>
+
+<!--        <div class="row justify-content-between mb-5">-->
+<!--            <div class="col-2">-->
+<!--                <h2>Engines:</h2>-->
+<!--            </div>-->
+<!--            <div class="col-2">-->
+<!--                <a th:href="${'/engineform'}"><button class="btn btn-success btn-block">ADD ENGINE</button></a>-->
+<!--            </div>-->
+<!--        </div>-->
+        <div class="row justify-content-end">
+            <div class="col-2">
+                <a th:href="${'/engineform'}"><button class="btn btn-success w-100">ADD ENGINE</button></a>
+            </div>
+        </div>
+
+        <h2 class="mt-4 mb-3">Engines:</h2>
+
+<p class="mb-0 text-muted">Transmissions: M - manual, A - Automatic, CVT - Continuously Variable Transmission, DSG - Direct-Shift Gearbox</p>
+
+<table class="table table-responsive table-hover table-striped-info">
+    <thead>
+    <tr>
+        <th>Company</th>
+        <th>Name</th>
+        <th style="width: 120px;">Volume [l]</th>
+        <th>Fuel</th>
+        <th>Power [KM]</th>
+        <th>Transmission</th>
+        <th>Description</th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody th:each="engine : ${engines}" th:object="${engine}">
+    <tr>
+        <td th:text="*{getCompany()}"></td>
+        <td th:text="*{getName()}"></td>
+        <td th:text="*{getVolume()}"></td>
+        <td th:text="*{getFuel()}"></td>
+        <td th:text="*{getPower()}"></td>
+        <td th:text="*{getTransmission()}"></td>
+        <td th:text="*{getDescription()}"></td>
+        <td><a th:href="${'/engine/'+engine.idEngine}"><button class="btn btn-warning">SELECT</button></a></td>
+        <td><a th:href="${'/deleteengine/'+engine.idEngine}"><button class="btn btn-danger">DELETE</button></a> </td>
+    </tr>
+    </tbody>
+</table>
+
+    </div>
+
+</body>
+</html>

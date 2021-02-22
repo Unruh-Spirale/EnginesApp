@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register form</title>
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.6.0/css/bootstrap.min.css}" />
+
+    <script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.6.0/js/bootstrap.min.js}"></script>
+
+</head>
+<body>
+
+<div class="container">
+
+    <div th:replace="fragments/topnav :: navbar"></div>
+
+    <h2 class="mt-5 mb-4 text-center text-uppercase">Registration form</h2>
+
+    <div class="col-sm-6 mx-auto">
+    <form th:action="@{/register}" th:method="post" th:object="${user}">
+        <div class="form-group">
+            <label for="login" class="text-uppercase">login</label>
+            <input type="text" id="login" placeholder="login" th:field="*{login}" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="password" class="text-uppercase">password</label>
+            <input type="password" id="password" placeholder="password" th:field="*{password}" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary text-uppercase col">register</button>
+    </form>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Engine</title>
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.6.0/css/bootstrap.min.css}" />
+
+    <script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.6.0/js/bootstrap.min.js}"></script>
+
+</head>
+<body>
+
+<div class="container">
+
+    <div th:replace="fragments/topnav :: navbar"></div>
+
+    <h2 class="mt-5">Engine:</h2>
+    <p class="mb-0 text-muted">Transmissions: M - manual, A - Automatic, CVT - Continuously Variable Transmission, DSG - Direct-Shift Gearbox</p>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Company</th>
+            <th>Name</th>
+            <th>Volume [l]</th>
+            <th>Fuel</th>
+            <th>Power [KM]</th>
+            <th>Transmission</th>
+            <th>Description</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td th:text="${engine.getCompany()}"></td>
+            <td th:text="${engine.getName()}"></td>
+            <td th:text="${engine.getVolume()}"></td>
+            <td th:text="${engine.getFuel()}"></td>
+            <td th:text="${engine.getPower()}"></td>
+            <td th:text="${engine.getTransmission()}"></td>
+            <td th:text="${engine.getDescription()}"></td>
+            <td><a th:href="${'/updateengine/'+engine.idEngine}"><button class="btn btn-warning">UPDATE</button></a> </td>
+            <td><a th:href="${'/carform/'+engine.idEngine}"><button class="btn btn-success">ADD CAR</button></a> </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h2>Cars use this engine:</h2>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Mark</th>
+                <th>Model</th>
+                <th>Generation</th>
+                <th>Years of production</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody th:each="car : ${engine.getCars()}" th:object="${car}">
+        <tr>
+            <td th:text="*{getMark()}"></td>
+            <td th:text="*{getModel()}"></td>
+            <td th:text="*{getGeneration()}"></td>
+            <td th:text="*{getYearOfProduction()}"></td>
+            <td><a th:href="${'/'+engine.idEngine+'/updatecar/'+car.idCar}"><button class="btn btn-warning">UPDATE</button></a></td>
+            <td><a th:href="${'/deletecar/'+car.idCar+'/'+engine.idEngine}"><button class="btn btn-danger">DELETE</button></a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
