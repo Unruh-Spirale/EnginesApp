@@ -7,11 +7,9 @@ import pl.cars.authenticationapp.domain.Fuel;
 import pl.cars.authenticationapp.domain.entity.Car;
 import pl.cars.authenticationapp.domain.entity.Engine;
 import pl.cars.authenticationapp.domain.entity.User;
-import pl.cars.authenticationapp.domain.entity.UserRole;
 import pl.cars.authenticationapp.repository.UserRepository;
-import pl.cars.authenticationapp.repository.UserRoleRepository;
-import pl.cars.authenticationapp.service.EngineService;
 import pl.cars.authenticationapp.service.CarService;
+import pl.cars.authenticationapp.service.EngineService;
 import pl.cars.authenticationapp.service.UserService;
 
 @SpringBootApplication
@@ -27,7 +25,7 @@ public class AuthenticationappApplication {
         userRepository.save(admin);
         userService.addAdmin(admin);
 
-        User user = new User("jan","123");
+        User user = new User("user","user");
         userRepository.save(user);
         userService.addWithDefaultRole(user);
 

@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <title>Engines database</title>
 
-    <link rel="stylesheet" th:href="@{/style.css}" type="text/css">
-
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.6.0/css/bootstrap.min.css}" />
+
+    <link rel="stylesheet" type="text/css" href="/css/topnav.css" />
 
     <script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
     <script th:src="@{/webjars/bootstrap/4.6.0/js/bootstrap.min.js}"></script>
@@ -26,15 +26,17 @@
 <!--                <a th:href="${'/engineform'}"><button class="btn btn-success btn-block">ADD ENGINE</button></a>-->
 <!--            </div>-->
 <!--        </div>-->
-        <div class="row justify-content-end">
-            <div class="col-2">
-                <a th:href="${'/engineform'}"><button class="btn btn-success w-100">ADD ENGINE</button></a>
-            </div>
-        </div>
+
+<!--        <div class="row justify-content-end">-->
+<!--            <div class="col-2">-->
+<!--                <a th:href="${'/engineform'}"><button class="btn btn-success w-100">ADD ENGINE</button></a>-->
+<!--            </div>-->
+<!--        </div>-->
 
         <h2 class="mt-4 mb-3">Engines:</h2>
-
-<p class="mb-0 text-muted">Transmissions: M - manual, A - Automatic, CVT - Continuously Variable Transmission, DSG - Direct-Shift Gearbox</p>
+        <a th:href="${'/engineform'}"><button class="btn btn-success btn-lg">ADD ENGINE</button></a>
+        <p class="mb-0 text-muted">Transmissions: M - manual, A - Automatic, CVT - Continuously Variable Transmission, DSG - Direct-Shift Gearbox
+        </p>
 
 <table class="table table-responsive table-hover table-striped-info">
     <thead>

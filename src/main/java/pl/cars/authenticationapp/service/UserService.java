@@ -9,6 +9,7 @@ import pl.cars.authenticationapp.repository.UserRepository;
 import pl.cars.authenticationapp.repository.UserRoleRepository;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -54,6 +55,18 @@ public class UserService {
 
     public List<User> getAllUsers(){
         List<User> users = userRepository.getAllUserSorted();
+        return users;
+    }
+
+    public List<User> getOnlyUsers(){
+//        List<User>users = userRepository.findAll().
+//                stream()
+//                .filter(x -> !x.getLogin().equals("admin"))
+//                .collect(Collectors.toList());
+                List<User>users = userRepository.findAll().
+                stream()
+                .filter(x -> x.getRoles().size()<2)
+                .collect(Collectors.toList());
         return users;
     }
 

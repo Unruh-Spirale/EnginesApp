@@ -14,4 +14,5 @@ public interface UserRepository extends JpaRepository<User,Long> {
 
     @Query("select u from User u order by u.login")
     List<User> getAllUserSorted();
+
 }
