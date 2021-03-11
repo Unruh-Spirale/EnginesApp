@@ -38,6 +38,8 @@ password: user
 
 ## Application
 
+Below there are some pictures to demonstrate this application. 
+
 ![Homepage](./screens/img1.png)
 ![Engine](./screens/img2.png)
 ![Login](./screens/img3.png)
