@@ -49,4 +49,6 @@ Below there are some pictures to demonstrate this application.
 ![UpdateEngine](./screens/img7.png)
 ![UpdateCar](./screens/img8.png)
 ![Users](./screens/img9.png)
+![Toggler](./screens/img10.png)
+![Toggler](./screens/img11.png)
 
