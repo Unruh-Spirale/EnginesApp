@@ -33,17 +33,20 @@ there are two default account:
 login: admin  
 password: admin
 * user account:   
-login: jan  
-password: 123
+login: user  
+password: user
 
 ## Application
 
-![Homepage](./images/1engineAppHome.png)
-![Engine](./images/2engineAppEngine.png)
-![Login](./images/3engineAppLogin.png)
-![Registration](./images/4engineAppRegistration.png)
-![AddEngine](./images/5engineAppAddEngine.png)
-![AddCar](./images/6engineAppAddCar.png)
-![UpdateEngine](./images/7engineAppUpdateEngine.png)
-![UpdateCar](./images/8engineAppUpdateCar.png)
-![Users](./images/9engineAppUsers.png)
+Below there are some pictures to demonstrate this application. 
+
+![Homepage](./screens/img1.png)
+![Engine](./screens/img2.png)
+![Login](./screens/img3.png)
+![Registration](./screens/img4.png)
+![AddEngine](./screens/img5.png)
+![AddCar](./screens/img6.png)
+![UpdateEngine](./screens/img7.png)
+![UpdateCar](./screens/img8.png)
+![Users](./screens/img9.png)
+
