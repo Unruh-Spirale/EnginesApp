@@ -12,8 +12,8 @@ and bootstrap. Application is secured.
 
 ## General info
 
-In this application user can create his own engines database. The CRUD methods are implemented (add,delete,update). I used two tables with ManyToMany relation. On main page there is 
-a table which displays all engines from database. User can select engine and see which cars use it. To use CRUD methods user has to regiser and login into application. Futhermore 
+In this application users can create his own engines database. The CRUD methods are implemented (add,delete,update). I used two tables with ManyToMany relation. On main page there is 
+a table which displays all engines from database. User can select engine and see which cars use it. To use CRUD methods users has to regiser and login into application. Futhermore 
 in application is one admin account. Admin can create own engines database or delete users from users database. 
 
 ## Technologies
@@ -32,9 +32,9 @@ there are two default account:
 * admin account:  
 login: admin  
 password: admin
-* user account:   
-login: user  
-password: user
+* users account:   
+login: users  
+password: users
 
 ## Application
 

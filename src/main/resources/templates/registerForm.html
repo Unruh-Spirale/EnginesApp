@@ -21,7 +21,7 @@
     <h2 class="mt-5 mb-4 text-center text-uppercase">Registration form</h2>
 
     <div class="col-sm-6 mx-auto">
-    <form th:action="@{/register}" th:method="post" th:object="${user}">
+    <form th:action="@{/register}" th:method="post" th:object="${users}">
         <div class="form-group">
             <label for="login" class="text-uppercase">login</label>
             <input type="text" id="login" placeholder="login" th:field="*{login}" class="form-control" required>

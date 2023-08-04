@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class User {
+public class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,10 +20,10 @@ public class User {
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private Set<UserRole> roles = new HashSet<>();
 
-    public User() {
+    public Users() {
     }
 
-    public User(@NotNull String login, @NotNull String password) {
+    public Users(@NotNull String login, @NotNull String password) {
         this.login = login;
         this.password = password;
     }

@@ -34,9 +34,9 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="user : ${users}" th:object="${user}">
+                <tr th:each="users : ${users}" th:object="${users}">
                     <td th:text="*{login}"></td>
-                    <td class="w-25"><a th:href="${'/deleteuser/'+user.id}"><button class="btn btn-danger w-100">DELETE</button></a> </td>
+                    <td class="w-25"><a th:href="${'/deleteuser/'+users.id}"><button class="btn btn-danger w-100">DELETE</button></a> </td>
                 </tr>
                 </tbody>
             </table>

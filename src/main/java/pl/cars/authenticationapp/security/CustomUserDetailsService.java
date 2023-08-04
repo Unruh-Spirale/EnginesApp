@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
-import pl.cars.authenticationapp.domain.entity.User;
+import pl.cars.authenticationapp.domain.entity.Users;
 import pl.cars.authenticationapp.domain.entity.UserRole;
 import pl.cars.authenticationapp.repository.UserRepository;
 
@@ -26,14 +26,14 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByLogin(username);
-        if(user == null){
+        Users users = userRepository.findByLogin(username);
+        if(users == null){
             throw new UsernameNotFoundException("User not found");
         }
         org.springframework.security.core.userdetails.User userDetails = new org.springframework.security.core.userdetails.User(
-                user.getLogin(),
-                user.getPassword(),
-                convertAuthorities(user.getRoles()));
+                users.getLogin(),
+                users.getPassword(),
+                convertAuthorities(users.getRoles()));
         return userDetails;
     }
 

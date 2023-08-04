@@ -6,7 +6,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import pl.cars.authenticationapp.domain.Fuel;
 import pl.cars.authenticationapp.domain.entity.Car;
 import pl.cars.authenticationapp.domain.entity.Engine;
-import pl.cars.authenticationapp.domain.entity.User;
+import pl.cars.authenticationapp.domain.entity.Users;
 import pl.cars.authenticationapp.repository.UserRepository;
 import pl.cars.authenticationapp.service.CarService;
 import pl.cars.authenticationapp.service.EngineService;
@@ -21,13 +21,13 @@ public class AuthenticationappApplication {
         UserService userService = ctx.getBean(UserService.class);
         UserRepository userRepository = ctx.getBean(UserRepository.class);
 
-        User admin = new User("admin","admin");
+        Users admin = new Users("admin","admin");
         userRepository.save(admin);
         userService.addAdmin(admin);
 
-        User user = new User("user","user");
-        userRepository.save(user);
-        userService.addWithDefaultRole(user);
+        Users users = new Users("user","user");
+        userRepository.save(users);
+        userService.addWithDefaultRole(users);
 
         CarService carService = ctx.getBean(CarService.class);
         EngineService engineService = ctx.getBean(EngineService.class);
