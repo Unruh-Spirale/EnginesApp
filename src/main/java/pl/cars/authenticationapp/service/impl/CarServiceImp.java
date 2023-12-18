@@ -1,21 +1,20 @@
-package pl.cars.authenticationapp.service;
+package pl.cars.authenticationapp.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.cars.authenticationapp.domain.entity.Car;
 import pl.cars.authenticationapp.repository.CarRepository;
 import pl.cars.authenticationapp.repository.EngineRepository;
+import pl.cars.authenticationapp.service.CarService;
 
 import java.util.List;
 
+@AllArgsConstructor
 @Service
-public class CarServiceImp implements CarService{
+public class CarServiceImp implements CarService {
 
-    @Autowired
-    CarRepository carRepository;
-
-    @Autowired
-    EngineRepository engineRepository;
+    private final CarRepository carRepository;
+    private final EngineRepository engineRepository;
 
     @Override
     public List<Car> getAllCars() {

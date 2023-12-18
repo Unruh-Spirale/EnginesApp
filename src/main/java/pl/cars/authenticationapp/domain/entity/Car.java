@@ -1,11 +1,18 @@
 package pl.cars.authenticationapp.domain.entity;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.validation.constraints.NotNull;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 public class Car {
 
@@ -38,9 +45,6 @@ public class Car {
         engines.remove(engine);
     }
 
-    public Car() {
-    }
-
     public Car(String mark, String model, String generation, String yearOfProduction) {
         this.mark = mark;
         this.model = model;
@@ -48,51 +52,4 @@ public class Car {
         this.yearOfProduction = yearOfProduction;
     }
 
-    public long getIdCar() {
-        return idCar;
-    }
-
-    public void setIdCar(long idCar) {
-        this.idCar = idCar;
-    }
-
-    public String getMark() {
-        return mark;
-    }
-
-    public void setMark(String mark) {
-        this.mark = mark;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public String getGeneration() {
-        return generation;
-    }
-
-    public void setGeneration(String generation) {
-        this.generation = generation;
-    }
-
-    public String getYearOfProduction() {
-        return yearOfProduction;
-    }
-
-    public void setYearOfProduction(String yearOfProduction) {
-        this.yearOfProduction = yearOfProduction;
-    }
-
-    public List<Engine> getEngines() {
-        return engines;
-    }
-
-    public void setEngines(List<Engine> engines) {
-        this.engines = engines;
-    }
 }

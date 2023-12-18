@@ -1,23 +1,22 @@
 package pl.cars.authenticationapp.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import pl.cars.authenticationapp.domain.entity.Car;
 import pl.cars.authenticationapp.domain.entity.Engine;
 import pl.cars.authenticationapp.service.CarService;
 import pl.cars.authenticationapp.service.EngineService;
 
-
+@AllArgsConstructor
 @Controller
 public class CarController {
 
-    @Autowired
-    CarService carService;
-
-    @Autowired
-    EngineService engineService;
+    private final CarService carService;
+    private final EngineService engineService;
 
     @GetMapping("/carform/{idEngine}")
     public String addCar(@PathVariable("idEngine") long id, Model model){
