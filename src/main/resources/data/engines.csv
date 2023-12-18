@@ -1,0 +1,4 @@
+company,name,volume,fuel,power,transmission,description
+Audi,2.0 TDI CR,2.0,DIESEL,136/140/170/190,"6M,7DSG,CVT",good durability
+Audi,3.0 TDI,3.0,DIESEL,204/225/240/313,"6M,6A,7DSG,8A","good durability, low fuel consumption"
+BMW,M57,3.0,DIESEL,184/197/218/235,"6M,6A",good durability but high fuel consumption
