@@ -26,7 +26,8 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 @Service
 public class DataInitializer {
-
+    private static final String DATA_ENGINES_CSV = "data/engines.csv";
+    private static final String DATA_CARS_CSV = "data/cars.csv";
     private final CarService carService;
     private final EngineService engineService;
     private final EngineRepository engineRepository;
@@ -37,7 +38,7 @@ public class DataInitializer {
     }
 
     private void initData() {
-        ClassPathResource resourceEngines = new ClassPathResource("data/engines.csv");
+        ClassPathResource resourceEngines = new ClassPathResource(DATA_ENGINES_CSV);
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(resourceEngines.getInputStream()))) {
             CsvToBean<CsvEngine> build = new CsvToBeanBuilder<CsvEngine>(reader)
                     .withType(CsvEngine.class)
@@ -49,7 +50,7 @@ public class DataInitializer {
             throw new IllegalStateException("Failed to parse engines CSV file", e);
         }
 
-        ClassPathResource resourceCars = new ClassPathResource("data/cars.csv");
+        ClassPathResource resourceCars = new ClassPathResource(DATA_CARS_CSV);
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(resourceCars.getInputStream()))) {
             CsvToBean<CsvCar> build = new CsvToBeanBuilder<CsvCar>(reader)
                     .withType(CsvCar.class)
