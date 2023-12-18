@@ -1,39 +1,26 @@
 package pl.cars.authenticationapp.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import pl.cars.authenticationapp.domain.entity.Users;
 import pl.cars.authenticationapp.domain.entity.UserRole;
+import pl.cars.authenticationapp.domain.entity.Users;
 import pl.cars.authenticationapp.repository.UserRepository;
 import pl.cars.authenticationapp.repository.UserRoleRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@AllArgsConstructor
 @Service
 public class UserService {
 
     private static final String DEFAULT_ROLE = "ROLE_USER";
     private static final String ADMIN_ROLE = "ROLE_ADMIN";
-    private UserRepository userRepository;
-    private UserRoleRepository userRoleRepository;
-    private PasswordEncoder passwordEncoder;
 
-    @Autowired
-    public UserService(PasswordEncoder passwordEncoder) {
-        this.passwordEncoder = passwordEncoder;
-    }
-
-    @Autowired
-    public void setUserRepository(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-
-    @Autowired
-    public void setUserRoleRepository(UserRoleRepository userRoleRepository) {
-        this.userRoleRepository = userRoleRepository;
-    }
+    private final UserRepository userRepository;
+    private final UserRoleRepository userRoleRepository;
+    private final PasswordEncoder passwordEncoder;
 
     public void addWithDefaultRole(Users users){
         UserRole defaultRole = userRoleRepository.findByRole(DEFAULT_ROLE);

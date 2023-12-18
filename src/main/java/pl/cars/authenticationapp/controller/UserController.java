@@ -1,25 +1,24 @@
 package pl.cars.authenticationapp.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import pl.cars.authenticationapp.domain.entity.Users;
 import pl.cars.authenticationapp.service.UserService;
 
 import javax.validation.Valid;
 import java.util.List;
 
+@AllArgsConstructor
 @Controller
 public class UserController {
 
-    UserService userService;
-
-    @Autowired
-    public void setUserService(UserService userService) {
-        this.userService = userService;
-    }
+    private final UserService userService;
 
     @GetMapping("/register")
     public String register(Model model){
