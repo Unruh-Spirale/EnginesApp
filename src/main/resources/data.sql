@@ -1,2 +1,2 @@
-insert into user_role(role,description) values ("ROLE_USER","default role for user");
-insert into user_role(role,description) values ("ROLE_ADMIN","default role for admin");
+INSERT INTO USER_ROLE (role,description) VALUES ('ROLE_USER','default role for users');
+INSERT INTO USER_ROLE (role,description) VALUES ('ROLE_ADMIN','default role for admin');

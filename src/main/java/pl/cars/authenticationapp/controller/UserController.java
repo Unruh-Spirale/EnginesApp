@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import pl.cars.authenticationapp.domain.entity.User;
+import pl.cars.authenticationapp.domain.entity.Users;
 import pl.cars.authenticationapp.service.UserService;
 
 import javax.validation.Valid;
@@ -23,16 +23,16 @@ public class UserController {
 
     @GetMapping("/register")
     public String register(Model model){
-        model.addAttribute("user",new User());
+        model.addAttribute("user",new Users());
         return "registerForm";
     }
 
     @PostMapping("/register")
-    public String addUser(@ModelAttribute @Valid User user, BindingResult bindingResult){
+    public String addUser(@ModelAttribute @Valid Users users, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
             return "registerForm";
         }else {
-            userService.addWithDefaultRole(user);
+            userService.addWithDefaultRole(users);
             return "redirect:/";
         }
     }
@@ -45,7 +45,7 @@ public class UserController {
     @GetMapping("/users")
     public String users(Model model){
 //        List<User> users = userService.getAllUsers();
-        List<User>users = userService.getOnlyUsers();
+        List<Users>users = userService.getOnlyUsers();
         model.addAttribute("users",users);
         return "users";
     }
