@@ -50,10 +50,6 @@ public class Engine {
         this.transmission = transmission;
         this.description = description;
     }
-
-    public void addCar(Car car) {
-        cars.add(car);
-    }
     public void removeCar(Car car) {
         cars.remove(car);
     }
