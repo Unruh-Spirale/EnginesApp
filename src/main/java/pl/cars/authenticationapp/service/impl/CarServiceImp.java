@@ -9,7 +9,6 @@ import pl.cars.authenticationapp.repository.EngineRepository;
 import pl.cars.authenticationapp.service.CarService;
 
 import java.util.List;
-import java.util.Optional;
 
 @AllArgsConstructor
 @Service
@@ -20,8 +19,7 @@ public class CarServiceImp implements CarService {
 
     @Override
     public List<Car> getAllCars() {
-        List<Car>cars = carRepository.getAllSortedCars();
-        return cars;
+        return carRepository.getAllSortedCars();
     }
     @Override
     public Car getCar(long id) {
@@ -31,7 +29,7 @@ public class CarServiceImp implements CarService {
     public void saveCarToEngine(Car car, long id) {
         Engine engine = engineRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Engine does not found"));
         Car carToSave = carRepository.findByMarkAndModelAndGenerationAndYearOfProduction(car.getMark(), car.getModel(), car.getGeneration(), car.getYearOfProduction())
-                .orElseGet(() -> car);
+                .orElse(car);
         carToSave.addEngine(engine);
         carRepository.save(carToSave);
     }

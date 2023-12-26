@@ -21,13 +21,12 @@ public class EngineServiceImp implements EngineService {
 
     @Override
     public List<Engine> getAllEngine() {
-        List<Engine> engines = engineRepository.getAllSortedEngines();
-        return engines;
+        return engineRepository.getAllSortedEngines();
     }
 
     @Override
     public Engine getEngine(long idEngine) {
-        Engine engine = engineRepository.findById(idEngine).get();
+        Engine engine = engineRepository.findById(idEngine).orElseThrow(() -> new IllegalArgumentException("Engine does not found"));
         return engine;
     }
 
@@ -35,7 +34,7 @@ public class EngineServiceImp implements EngineService {
     public void saveEngine(Engine engine) {
         Engine engineToSave = engineRepository.findByCompanyAndNameAndVolumeAndFuelAndPowerAndTransmissionAndDescription(
                 engine.getCompany(), engine.getName(), engine.getVolume(), engine.getFuel(), engine.getPower(), engine.getTransmission(), engine.getDescription()
-        ).orElseGet(() -> engine);
+        ).orElse(engine);
         engineRepository.save(engineToSave);
     }
 

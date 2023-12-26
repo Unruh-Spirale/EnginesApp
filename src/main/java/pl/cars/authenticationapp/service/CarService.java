@@ -1,7 +1,6 @@
 package pl.cars.authenticationapp.service;
 
 import pl.cars.authenticationapp.domain.entity.Car;
-import pl.cars.authenticationapp.domain.entity.Engine;
 
 import java.util.List;
 

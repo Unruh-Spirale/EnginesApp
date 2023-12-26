@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.cars.authenticationapp.domain.entity.Car;
-import pl.cars.authenticationapp.domain.entity.Engine;
 import pl.cars.authenticationapp.service.CarService;
 import pl.cars.authenticationapp.service.EngineService;
 
