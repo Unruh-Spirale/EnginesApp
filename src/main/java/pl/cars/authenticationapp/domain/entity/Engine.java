@@ -6,7 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -37,18 +37,25 @@ public class Engine {
 
     private String description;
 
-    @ManyToMany(mappedBy = "engines")
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "engines")
 //    @JoinTable(name = "car_engine",joinColumns = @JoinColumn(name = "id_engine"),inverseJoinColumns = @JoinColumn(name = "id_car"))
-    private List<Car>cars;
+    private Set<Car> cars;
 
-    public Engine(String comapny, String name, double volume, String fuel, String power, String transmission, String description) {
-        this.company = comapny;
+    public Engine(String company, String name, double volume, String fuel, String power, String transmission, String description) {
+        this.company = company;
         this.name = name;
         this.volume = volume;
         this.fuel = fuel;
         this.power = power;
         this.transmission = transmission;
         this.description = description;
+    }
+
+    public void addCar(Car car) {
+        cars.add(car);
+    }
+    public void removeCar(Car car) {
+        cars.remove(car);
     }
 
 }

@@ -2,18 +2,22 @@ package pl.cars.authenticationapp.service.impl;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pl.cars.authenticationapp.domain.entity.Car;
 import pl.cars.authenticationapp.domain.entity.Engine;
+import pl.cars.authenticationapp.repository.CarRepository;
 import pl.cars.authenticationapp.repository.EngineRepository;
 import pl.cars.authenticationapp.service.EngineService;
 
 import java.util.List;
+import java.util.Set;
 
 @AllArgsConstructor
 @Service
 public class EngineServiceImp implements EngineService {
 
     private final EngineRepository engineRepository;
+    private final CarRepository carRepository;
 
     @Override
     public List<Engine> getAllEngine() {
@@ -29,12 +33,15 @@ public class EngineServiceImp implements EngineService {
 
     @Override
     public void saveEngine(Engine engine) {
-        engineRepository.save(engine);
+        Engine engineToSave = engineRepository.findByCompanyAndNameAndVolumeAndFuelAndPowerAndTransmissionAndDescription(
+                engine.getCompany(), engine.getName(), engine.getVolume(), engine.getFuel(), engine.getPower(), engine.getTransmission(), engine.getDescription()
+        ).orElseGet(() -> engine);
+        engineRepository.save(engineToSave);
     }
 
     @Override
     public void updateEngine(long id,Engine updateEngine) {
-        Engine engine = engineRepository.findById(id).get();
+        Engine engine = engineRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Engine does not exist in database"));
 
         engine.setCompany(updateEngine.getCompany());
         engine.setName(updateEngine.getName());
@@ -48,12 +55,17 @@ public class EngineServiceImp implements EngineService {
     }
 
     @Override
+    @Transactional
     public void deleteEngine(long id) {
-        Engine engine = engineRepository.findById(id).get();
-        List<Car> cars = engine.getCars();
+        Engine engine = engineRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Engine does not found"));
+        Set<Car> cars = engine.getCars();
         for(Car car: cars){
             car.removeEngine(engine);
+            if (car.getEngines().isEmpty()) {
+                carRepository.delete(car);
+            }
         }
+
         engineRepository.delete(engine);
     }
 

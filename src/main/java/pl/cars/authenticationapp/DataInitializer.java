@@ -21,6 +21,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @AllArgsConstructor
@@ -64,11 +65,11 @@ public class DataInitializer {
     }
 
     private void initCar(CsvCar csvCar) {
-        List<Engine> enginesList = Arrays.stream(csvCar.engines.split(","))
+        Set<Engine> enginesList = Arrays.stream(csvCar.engines.split(","))
                 .filter(Objects::nonNull)
                 .map(String::trim)
                 .map(this::getEngine)
-                .collect(Collectors.toList());
+                .collect(Collectors.toSet());
         Car car = new Car(
                 csvCar.mark,
                 csvCar.model,
