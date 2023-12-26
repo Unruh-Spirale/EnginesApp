@@ -26,8 +26,7 @@ public class EngineServiceImp implements EngineService {
 
     @Override
     public Engine getEngine(long idEngine) {
-        Engine engine = engineRepository.findById(idEngine).orElseThrow(() -> new IllegalArgumentException("Engine does not found"));
-        return engine;
+        return engineRepository.findById(idEngine).orElseThrow(() -> new IllegalArgumentException("Engine does not found"));
     }
 
     @Override
