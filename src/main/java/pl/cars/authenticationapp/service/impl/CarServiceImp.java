@@ -26,19 +26,19 @@ public class CarServiceImp implements CarService {
         return carRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Car does not found"));
     }
     @Override
-    public void saveCarToEngine(Car car, long id) {
+    public Car saveCarToEngine(Car car, long id) {
         Engine engine = engineRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Engine does not found"));
         Car carToSave = carRepository.findByMarkAndModelAndGenerationAndYearOfProduction(car.getMark(), car.getModel(), car.getGeneration(), car.getYearOfProduction())
                 .orElse(car);
         carToSave.addEngine(engine);
-        carRepository.save(carToSave);
+        return carRepository.save(carToSave);
     }
     @Override
-    public void saveCar(Car car) {
-        carRepository.save(car);
+    public Car saveCar(Car car) {
+        return carRepository.save(car);
     }
     @Override
-    public void updateCar(long id, Car updateCar) {
+    public Car updateCar(long id, Car updateCar) {
         Car car = carRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Car does not found"));
 
         car.setMark(updateCar.getMark());
@@ -46,7 +46,7 @@ public class CarServiceImp implements CarService {
         car.setGeneration(updateCar.getGeneration());
         car.setYearOfProduction(updateCar.getYearOfProduction());
 
-        carRepository.save(car);
+        return carRepository.save(car);
     }
 
     @Override

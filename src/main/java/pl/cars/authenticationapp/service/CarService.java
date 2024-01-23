@@ -8,9 +8,9 @@ public interface CarService {
 
     List<Car> getAllCars();
     Car getCar(long id);
-    void saveCarToEngine(Car car, long id);
+    Car saveCarToEngine(Car car, long id);
 
-    void saveCar(Car car);
-    void updateCar(long id,Car updateCar);
+    Car saveCar(Car car);
+    Car updateCar(long id,Car updateCar);
     void deleteCar(long idCar, long idEngine);
 }
