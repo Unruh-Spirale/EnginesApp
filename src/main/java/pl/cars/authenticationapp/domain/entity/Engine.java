@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.HashSet;
 import java.util.Set;
 
 @Getter
@@ -39,7 +40,7 @@ public class Engine {
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "engines")
 //    @JoinTable(name = "car_engine",joinColumns = @JoinColumn(name = "id_engine"),inverseJoinColumns = @JoinColumn(name = "id_car"))
-    private Set<Car> cars;
+    private Set<Car> cars = new HashSet<>();
 
     public Engine(String company, String name, double volume, String fuel, String power, String transmission, String description) {
         this.company = company;

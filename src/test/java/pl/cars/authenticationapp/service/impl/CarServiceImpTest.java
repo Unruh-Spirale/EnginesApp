@@ -12,7 +12,6 @@ import pl.cars.authenticationapp.repository.CarRepository;
 import pl.cars.authenticationapp.repository.EngineRepository;
 import pl.cars.authenticationapp.service.CarService;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
@@ -91,9 +90,7 @@ class CarServiceImpTest {
         long idCar = 12;
         long idEngine = 12;
         Car car = new Car();
-        car.setEngines(new HashSet<>());
         Engine engine = new Engine();
-        engine.setCars(new HashSet<>());
         Mockito.when(carRepository.findById(idCar)).thenReturn(Optional.of(car));
         Mockito.when(engineRepository.findById(idEngine)).thenReturn(Optional.of(engine));
 

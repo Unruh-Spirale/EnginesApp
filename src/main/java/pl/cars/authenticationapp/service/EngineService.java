@@ -8,8 +8,8 @@ public interface EngineService {
 
     List<Engine> getAllEngine();
     Engine getEngine(long idEngine);
-    void saveEngine(Engine engine);
-    void updateEngine(long id,Engine updateEngine);
+    Engine saveEngine(Engine engine);
+    Engine updateEngine(long id,Engine updateEngine);
     void deleteEngine(long id);
 
 }
