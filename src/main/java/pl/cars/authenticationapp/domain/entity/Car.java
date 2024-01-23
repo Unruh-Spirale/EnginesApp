@@ -4,11 +4,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.validation.constraints.NotNull;
-
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import javax.validation.constraints.NotNull;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -31,14 +30,11 @@ public class Car {
 
     private String yearOfProduction; // 2007-2016 or 2016 - present
 
-    @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH})
+    @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     @JoinTable(name = "car_engine", joinColumns = @JoinColumn(name = "id_car"),inverseJoinColumns = @JoinColumn(name = "id_engine"))
-    private List<Engine> engines;
+    private Set<Engine> engines = new HashSet<>();
 
     public void addEngine(Engine engine){
-        if(engines == null){
-            engines = new ArrayList<>();
-        }
         engines.add(engine);
     }
     public void removeEngine(Engine engine){

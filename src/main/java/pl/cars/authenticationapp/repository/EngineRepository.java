@@ -16,4 +16,7 @@ public interface EngineRepository extends JpaRepository<Engine,Long> {
 
     Optional<Engine> findByNameIgnoreCase(String name);
 
+    Optional<Engine> findByCompanyAndNameAndVolumeAndFuelAndPowerAndTransmissionAndDescription(
+            String company, String name, double volume, String fuel, String power, String transmission, String description);
+
 }

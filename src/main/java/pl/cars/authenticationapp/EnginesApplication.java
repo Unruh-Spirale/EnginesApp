@@ -8,10 +8,10 @@ import pl.cars.authenticationapp.repository.UserRepository;
 import pl.cars.authenticationapp.service.UserService;
 
 @SpringBootApplication
-public class AuthenticationappApplication {
+public class EnginesApplication {
 
     public static void main(String[] args) {
-        ConfigurableApplicationContext ctx = SpringApplication.run(AuthenticationappApplication.class, args);
+        ConfigurableApplicationContext ctx = SpringApplication.run(EnginesApplication.class, args);
 
         UserService userService = ctx.getBean(UserService.class);
         UserRepository userRepository = ctx.getBean(UserRepository.class);

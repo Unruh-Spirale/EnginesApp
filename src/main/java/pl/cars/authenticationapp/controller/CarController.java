@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.cars.authenticationapp.domain.entity.Car;
-import pl.cars.authenticationapp.domain.entity.Engine;
 import pl.cars.authenticationapp.service.CarService;
 import pl.cars.authenticationapp.service.EngineService;
 
@@ -27,15 +26,13 @@ public class CarController {
 
     @PostMapping("/savecar/{idEngine}")
     public String saveCar(@PathVariable("idEngine") long id, Car car){
-        Engine engine = engineService.getEngine(id);
-        car.addEngine(engine);
-        carService.saveCar(car);
+        carService.saveCarToEngine(car, id);
         return "redirect:/engine/{idEngine}";
     }
 
     @GetMapping("/deletecar/{idCar}/{idEngine}")
-    public String deleteCar(@PathVariable("idCar") Long id){
-        carService.deleteCar(id);
+    public String deleteCar(@PathVariable("idCar") Long idCar, @PathVariable("idEngine") Long idEngine){
+        carService.deleteCar(idCar, idEngine);
         return "redirect:/engine/{idEngine}";
     }
 
