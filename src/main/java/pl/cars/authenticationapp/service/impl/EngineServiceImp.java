@@ -30,15 +30,15 @@ public class EngineServiceImp implements EngineService {
     }
 
     @Override
-    public void saveEngine(Engine engine) {
+    public Engine saveEngine(Engine engine) {
         Engine engineToSave = engineRepository.findByCompanyAndNameAndVolumeAndFuelAndPowerAndTransmissionAndDescription(
                 engine.getCompany(), engine.getName(), engine.getVolume(), engine.getFuel(), engine.getPower(), engine.getTransmission(), engine.getDescription()
         ).orElse(engine);
-        engineRepository.save(engineToSave);
+        return engineRepository.save(engineToSave);
     }
 
     @Override
-    public void updateEngine(long id,Engine updateEngine) {
+    public Engine updateEngine(long id,Engine updateEngine) {
         Engine engine = engineRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Engine does not exist in database"));
 
         engine.setCompany(updateEngine.getCompany());
@@ -49,7 +49,7 @@ public class EngineServiceImp implements EngineService {
         engine.setTransmission(updateEngine.getTransmission());
         engine.setDescription(updateEngine.getDescription());
 
-        engineRepository.save(engine);
+        return engineRepository.save(engine);
     }
 
     @Override
@@ -63,7 +63,6 @@ public class EngineServiceImp implements EngineService {
                 carRepository.delete(car);
             }
         }
-
         engineRepository.delete(engine);
     }
 
